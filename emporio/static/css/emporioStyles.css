@@ -1,4 +1,44 @@
-#logo{
-    width: 357px;
-    height: 131px;
+.paletaColores{
+    background-image: linear-gradient(to right,#004B23, #006400, #007200, #008000, #38B000, #70E000, #9EF01A, #CCFF33);
 }
+
+#titulo {
+    font-family: 'Dancing Script', cursive;
+    color: #004B23;
+}
+
+#logo_emporio{
+    padding: 2px;
+    padding-bottom: 4px;
+}
+
+#barra_navegacion{
+    background-image: linear-gradient(to right, #38B000, #70E000, #9EF01A, #CCFF33);
+}
+
+#navtabs{
+    color: #004B23;
+    background-color: #38B000;
+    border-color: #004B23;
+}
+
+#navtabs2{
+    color: #004B23;
+    background-color: #008000;
+    border-color: #004B23;
+}
+
+.nav-link{
+    color: #004B23;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-image: linear-gradient(to right, #38B000, #70E000, #9EF01A, #CCFF33);
+    color: #004B23;
+    text-align: center;
+    padding-top: 5px;
+ }

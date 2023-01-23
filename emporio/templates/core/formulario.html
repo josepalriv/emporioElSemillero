@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+{% extends "core/base.html" %}
+
+{% block head_title_block %}
+Formulario
+{% endblock %}
+
+{% block body_block %}
+<h1>Formulario de Productos</h1>
+<div class="container">
+    <form method="POST">
+        {{ formulario.as_p }}
+        {% csrf_token %}
+        <input class="btn btn-primary" type="submit" value="Submit">
+    </form>
+</div>
+{% endblock %}

@@ -1,18 +1,39 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% extends "core/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'css/emporioStyles.css' %}">
-</head>
+{% block head_title_block %}
+Home
+{% endblock %}
 
-<body>
-    <h1>Página de Inicio</h1>
-        <img id="logo" src="{% static 'images/Logo_Emporio.png' %}" alt="Logo Emporio">
-</body>
+{% block body_block %}
 
-</html>
+<h1>Página de Inicio</h1>
+<div class="container">
+    <a href="/formulario">Acceso a Formulario</a>
+</div>
+<div>
+    <h2>Productos Disponibles:</h2>
+    {% if productos %}
+    <table>
+        <thead>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Contenido</th>
+            <th>Presentación</th>
+            <th>Precio</th>
+        </thead>
+        {% for prod in productos %}
+        <tr>
+            <td>{{ prod.codigo }}</td>
+            <td>{{ prod.nombre }}</td>
+            <td>{{ prod.contenido }}</td>
+            <td>{{ prod.presentacion }}</td>
+            <td>{{ prod.precioVenta }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>¡¡¡No hay registros!!!</p>
+    {% endif %}
+</div>
+{% endblock %}
