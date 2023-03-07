@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% extends "core/base.html" %}
+
+{% block head_title_block %}
+LogIn
+{% endblock %}
+
+{% block body_block %}
+<h1>Registro de Usuario</h1>
+
+{% if registrado %}
+    <h1>¡¡¡Gracias Por Registrarse!!!</h1>
+{% else %}
+    <h1>¡¡¡Registrese Aquí!!!</h1>
+    <h3>Complete sus datos:</h3>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ formulario_usuario.as_p }}
+        <input type="submit" name="Registrarse" value="Registrarse">
+        
+    </form>
+
+{% endif %}
+
+
+{% endblock %}

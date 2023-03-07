@@ -1,6 +1,8 @@
 from django import forms
+from django.contrib.auth.models import User
 from .models import Producto
 from django.core import validators
+
 
 class FormularioIngresoProducto(forms.ModelForm):
     class Meta:
@@ -8,14 +10,20 @@ class FormularioIngresoProducto(forms.ModelForm):
         fields = '__all__'
 
 
+class UserForm(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput())
+#    rep_password = forms.CharField(widget=forms.PasswordInput())
+
+    class Meta():
+        model = User
+        fields = ('username', 'email', 'password')
 
 
-# class FormularioProducto(forms.Form):
-#     codigo = forms.IntegerField(validators=[validators.integer_validator])
-#     nombre = forms.CharField()
-#     #categoria = forms.ChoiceField()
-#     contenido = forms.CharField()
-#     #presentacion = forms.ChoiceField()
-#     precioVenta = forms.IntegerField(validators=[validators.integer_validator])
-#     #foto = forms.ImageField()
-#     botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.MinLengthValidator(0)])
+    # def clean(self):
+    #     all_clean_data = super().clean()
+    #     password = all_clean_data['password']
+    #     rep_password = all_clean_data['repeat_password']
+    #
+    #     if password != rep_password:
+    #         raise forms.ValidationError("¡¡¡Contraseñas no coinciden!!!")
+

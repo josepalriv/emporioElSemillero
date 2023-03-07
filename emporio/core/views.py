@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from .models import Producto, Categoria
-from . import forms
-from .forms import FormularioIngresoProducto
+from .models import Producto
+from .forms import FormularioIngresoProducto, UserForm
 
 
 # Create your views here.
@@ -34,8 +33,31 @@ def formulario_ingresa_producto(request):
 
         if formulario.is_valid():
             formulario.save(commit=True)
+
+            if 'foto' in request.FILES:
+                formulario.foto = request.FILES['foto']
+            formulario.save()
             return home(request)
         else:
             print('ERROR, FORMULARIO INVALIDO')
 
     return render(request, "core/formulario.html", {'formulario':formulario})
+
+def registro_usuario(request):
+
+    registrado = False
+
+    if request.method == "POST":
+        form_usuario = UserForm(data=request.POST)
+
+        if form_usuario.is_valid():
+            user = form_usuario.save()
+            user.set_password(user.password)
+            user.save()
+            registrado = True
+        else:
+            print(form_usuario.errors)
+    else:
+        form_usuario = UserForm()
+
+    return render(request, 'core/registro.html',{'formulario_usuario':form_usuario, 'registrado':registrado})

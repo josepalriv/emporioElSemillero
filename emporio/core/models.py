@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -23,7 +24,10 @@ class Producto(models.Model):
     contenido = models.CharField(max_length=50, verbose_name="Tipo de Contenido")
     presentacion = models.ForeignKey(Presentacion, on_delete=models.DO_NOTHING)
     precioVenta = models.IntegerField(verbose_name="Precio de Venta a Público")
-    foto = models.ImageField(height_field=None, width_field=None, verbose_name="Imagen del Producto", null=True, blank=True)
+    foto = models.ImageField(upload_to='img_productos', blank=True, null=True)
 
     def __str__(self):
         return self.nombre
+
+
+

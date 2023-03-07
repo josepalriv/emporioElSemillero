@@ -8,7 +8,7 @@ Formulario
 {% block body_block %}
 <h1>Formulario de Productos</h1>
 <div class="container">
-    <form method="POST">
+    <form enctype="multipart/form-data" method="POST">
         {{ formulario.as_p }}
         {% csrf_token %}
         <input class="btn btn-primary" type="submit" value="Submit">

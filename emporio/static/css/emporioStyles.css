@@ -33,8 +33,7 @@
 }
 
 .footer {
-    position: fixed;
-    left: 0;
+    
     bottom: 0;
     width: 100%;
     background-image: linear-gradient(to right, #38B000, #70E000, #9EF01A, #CCFF33);
@@ -42,3 +41,8 @@
     text-align: center;
     padding-top: 5px;
  }
+
+ #contenidopagina{
+    overflow-y: scroll;
+    height: 100vh;
+}
